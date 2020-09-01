@@ -1,0 +1,80 @@
+1. 创立的时候选择
+packaging 为jar
+
+Template Engines
+选择
+Thymeleaf
+
+SQL选择
+Spring JDBC DATA
+MyBatis Framework
+MySQL Driver
+Spring Data jpa
+
+Developer Tools选择
+Spring Boot DevTools
+
+Web选择
+Spring Web
+
+//注意property project facet
+
+
+---------------------------
+2. 输入application.properties
+参数 修改掉一些过时的用法
+然后就可以 run了
+
+之后为了我可以看到写页面，并且application.properties已经设置了classpath:/templates/mytemplates/
+那么我就要在/src/main/resources/templates/mytemplates 下设置点东西
+------------------
+3. 添加Controller
+----------------
+4. 创建数据库
+navicat 
+new database
+school
+utf8
+uft8_general_ci
+
+5. 创建数据库的表
+
+
+使用JDBC连接数据库出现The server time zone value '�й���׼ʱ��' is解决方案
+
+** 将jdbc.properties中url后加入?serverTimezone=UTC即可解决**
+
+----------------
+6. 添加model
+例如Student.java
+----------------
+7. 因为我们使用mybatis，所以还需要一个repository
+
+他就相当于一个dao,
+
+只不过Mybatis 需要mapper的xml去写sql的具体实现, 去对应这个repository接口里写的方法
+例如:
+
+StudentRepository
+这个接口定义了
+public List<Student> findAllStudents();
+
+对应的mapper 要写sql语句去实现
+----------------
+8. 所以这个时候需要mapper的xml文件
+首先去
+src/main/resources/  创建一个
+mybatis-mapper文件夹
+因为我在application.properties 里面指明了mapper 想被放在src/main/resources/mybatis-mapper 的里面
+
+StudentDaoInterfaceMapper.xml
+----------------
+model, repository, Controller, 做好了
+9. 现在需要service接口
+
+public interface StudentService
+
+------------------
+10. 然后为这个接口书写 具体实现类
+StudentServiceImpl
+
